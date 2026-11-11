@@ -151,4 +151,24 @@
     });
   });
   render();
+
+  // Enllaços interns (#calendari, #resultats...): desplaça sense afegir el # a l'adreça,
+  // així en recarregar la pàgina torna a començar a dalt.
+  try { history.scrollRestoration = "manual"; } catch (e) {}
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute("href").slice(1);
+    var target = id === "top" ? document.body : document.getElementById(id);
+    if (!target) return;
+    ev.preventDefault();
+    if (id === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+    else target.scrollIntoView({ behavior: "smooth" });
+  });
+  // Si s'arriba amb un enllaç compartit (p. ex. .../#resultats), s'hi va, però es neteja l'adreça.
+  if (location.hash) {
+    window.addEventListener("load", function () {
+      try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+    });
+  }
 })();
