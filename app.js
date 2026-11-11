@@ -6,7 +6,7 @@
       b1: "Veure calendari", b2: "Últims resultats",
       t_date: "Data", t_race: "Cursa", t_place: "Lloc",
       next: "Propera cursa", done: "Disputada", soon: "Propera",
-      pdf: "PDF →", ver: "Verificacions →", ver_soon: "Verificacions: properament",
+      pdf: "PDF →", res: "Resultats →", ver: "Verificacions →", ver_soon: "Verificacions: properament",
       na: "Properament", tbd: "Per confirmar", no_cal: "Encara no hi ha curses al calendari.",
       no_res: "Encara no hi ha resultats publicats.",
       sample: "* Dades d'exemple",
@@ -19,7 +19,7 @@
       b1: "Ver calendario", b2: "Últimos resultados",
       t_date: "Fecha", t_race: "Carrera", t_place: "Lugar",
       next: "Próxima carrera", done: "Disputada", soon: "Próxima",
-      pdf: "PDF →", ver: "Verificaciones →", ver_soon: "Verificaciones: próximamente",
+      pdf: "PDF →", res: "Resultados →", ver: "Verificaciones →", ver_soon: "Verificaciones: próximamente",
       na: "Próximamente", tbd: "Por confirmar", no_cal: "Todavía no hay carreras en el calendario.",
       no_res: "Todavía no hay resultados publicados.",
       sample: "* Datos de ejemplo",
@@ -112,7 +112,7 @@
     if (!list.length) res.appendChild(el("p", { class: "empty", text: t.no_res }));
     list.forEach(function (r) {
       var links = el("div", { class: "links" }, []);
-      if (r.pdf) links.appendChild(el("a", { href: r.pdf, target: "_blank", rel: "noopener", text: t.pdf }));
+      if (r.pdf) links.appendChild(el("a", { href: r.pdf, target: "_blank", rel: "noopener", text: t.res }));
       if (r.verification) links.appendChild(el("a", { href: r.verification, target: "_blank", rel: "noopener", text: t.ver }));
       var card = el("div", { class: "card" }, [
         el("h3", { text: tr(r.name) + " · " + fmt(r.date) }), links

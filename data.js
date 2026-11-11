@@ -7,7 +7,7 @@
 const DATA = {
 
   // Posa-ho a false quan hi hagi resultats reals (amaga l'avís "dades d'exemple")
-  sample: true,
+  sample: false,
 
   // Entitat que dona suport al club (surt al peu de pàgina).
   // Posa el logo a la carpeta del web (ajuntament.png). Si "url" està buit, no és un enllaç.
@@ -62,13 +62,13 @@ const DATA = {
   // Resultats. "verification" és el PDF de verificacions tècniques d'aquella cursa
   // (deixa-ho a null fins que es publiquin).
   results: [
-    { date: "2026-10-18",
-      name: { ca: "Campionat · Ronda 2", es: "Campeonato · Ronda 2" },
-      pdf: "pdf/resultats/2026-10-18-ronda-2.pdf",
+    { date: "2026-11-06",
+      name: { ca: "DTM", es: "DTM" },
+      pdf: "pdf/resultats/dtm_6112026.html",
       verification: null },
-    { date: "2026-09-20",
-      name: { ca: "Campionat · Ronda 1", es: "Campeonato · Ronda 1" },
-      pdf: "pdf/resultats/2026-09-20-ronda-1.pdf",
+    { date: "2026-10-23",
+      name: { ca: "GT3", es: "GT3" },
+      pdf: "pdf/resultats/gt3_23102026.html",
       verification: null }
   ]
 };
