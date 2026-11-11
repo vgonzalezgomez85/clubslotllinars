@@ -51,7 +51,7 @@ const DATA = {
     { pdf: "pdf/reglaments/reglament-tecnic.pdf",
       title: { ca: "Reglament tècnic", es: "Reglamento técnico" },
       desc:  { ca: "Especificacions dels cotxes i components permesos.", es: "Especificaciones de los coches y componentes permitidos." } },
-    { pdf: "pdf/reglaments/Reglamento_Copa_Slot-it_2026_ES-CA_1.pdf",
+    { pdf: "pdf/reglaments/Reglamento_Copa_Slot-it_2026_ES-CA.pdf",
       title: { ca: "Reglament tècnic · Campionat Copa Slot.it", es: "Reglamento técnico · Campeonato Copa Slot.it" },
       desc:  { ca: "LMP · Hypercar 2026: models permesos, carrosseries, pes i components.", es: "LMP · Hypercar 2026: modelos permitidos, carrocerías, peso y componentes." } },
     { pdf: null,
