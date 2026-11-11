@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Club Slot Llinars</title>
+<meta name="description" content="Calendari de curses, reglaments i resultats del Club Slot Llinars (Llinars del Vallès).">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titan+One&family=Cinzel:wght@900&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="check"></div>
+<header><div class="bar">
+  <a class="brand" href="#top" aria-label="Club Slot Llinars"><img src="logo.png" alt="Club Slot Llinars"></a>
+  <nav>
+    <a href="#calendari" data-i18n="nav_cal"></a>
+    <a href="#reglaments" data-i18n="nav_reg"></a>
+    <a href="#resultats" data-i18n="nav_res"></a>
+    <span class="lang"><button data-l="ca">CA</button><button data-l="es">ES</button></span>
+  </nav>
+</div></header>
+
+<div class="hero" id="top">
+  <h1 aria-label="Slot Llinars"><span class="slot">Slot</span><span class="llinars">Llinars</span></h1>
+  <p data-i18n="sub"></p>
+  <a class="btn" href="#calendari" data-i18n="b1"></a><a class="btn alt" href="#resultats" data-i18n="b2"></a>
+</div>
+
+<section id="calendari">
+  <h2 data-i18n="nav_cal"></h2>
+  <div id="next"></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th data-i18n="t_date"></th><th data-i18n="t_race"></th><th data-i18n="t_place"></th><th></th></tr></thead>
+    <tbody id="cal"></tbody>
+  </table></div>
+</section>
+
+<section id="reglaments">
+  <h2 data-i18n="nav_reg"></h2>
+  <div class="grid" id="rules"></div>
+</section>
+
+<section id="resultats">
+  <h2 data-i18n="nav_res"></h2>
+  <div class="grid" id="results"></div>
+  <p class="note" id="sample2"></p>
+</section>
+
+<footer>
+  <div class="check"></div>
+  <div class="sponsor" id="sponsor"></div>
+  <p>© Club Slot Llinars · Llinars del Vallès</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
