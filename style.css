@@ -39,6 +39,9 @@ tr:nth-child(even) td{background:var(--grey)}
 tr.past td{color:#777}
 .tag{background:var(--red);color:#fff;border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;white-space:nowrap}
 .tag.done{background:#444}
+td.st{white-space:nowrap}
+.tag.res{display:inline-block;margin-left:6px;text-decoration:none}
+.tag.res:hover{background:#111}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 .card{background:var(--grey);border-radius:14px;padding:20px;border-top:6px solid var(--red)}
 .card h3{font-family:var(--f-llinars);text-transform:uppercase;letter-spacing:.03em;margin-bottom:6px}

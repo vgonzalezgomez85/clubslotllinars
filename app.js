@@ -86,9 +86,12 @@
       var past = r.date && r.date < today, isNext = next && r === next;
       var tag = past ? el("span", { class: "tag done", text: t.done })
               : isNext ? el("span", { class: "tag", text: t.soon }) : document.createTextNode("");
+      var cells = [tag];
+      var resOf = r.date && DATA.results.filter(function (x) { return x.date === r.date && x.pdf; })[0];
+      if (resOf) cells.push(el("a", { class: "tag res", href: resOf.pdf, target: "_blank", rel: "noopener", text: t.res }));
       body.appendChild(el("tr", past ? { class: "past" } : {}, [
         el("td", { text: r.date ? fmt(r.date) : t.tbd }), el("td", { text: tr(r.name) }),
-        el("td", { text: r.place + (r.time ? " · " + r.time : "") }), el("td", {}, [tag])
+        el("td", { text: r.place + (r.time ? " · " + r.time : "") }), el("td", { class: "st" }, cells)
       ]));
     });
 
