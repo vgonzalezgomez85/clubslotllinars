@@ -6,6 +6,7 @@
       b1: "Veure calendari", b2: "Últims resultats",
       last_res: "Últims resultats", cal_title: "Calendari",
       cal_lead: "Totes les curses es fan a {place}, excepte si s'indica.",
+      cal_lead_t: "Totes les curses es fan a {place} a les {time} h, excepte si s'indica.",
       next: "Propera cursa", done: "Disputada", soon: "Propera",
       today: "Avui!", tomorrow: "Demà", left: "Falten {n} dies",
       all: "Totes", filter: "Filtrar per campionat",
@@ -33,6 +34,7 @@
       b1: "Ver calendario", b2: "Últimos resultados",
       last_res: "Últimos resultados", cal_title: "Calendario",
       cal_lead: "Todas las carreras se disputan en {place}, salvo que se indique.",
+      cal_lead_t: "Todas las carreras se disputan en {place} a las {time} h, salvo que se indique.",
       next: "Próxima carrera", done: "Disputada", soon: "Próxima",
       today: "¡Hoy!", tomorrow: "Mañana", left: "Faltan {n} días",
       all: "Todas", filter: "Filtrar por campeonato",
@@ -64,6 +66,8 @@
 
   var CHAMPS = DATA.championships || [];
   var PLACE = DATA.defaultPlace || "";
+  var TIME = DATA.defaultTime || "";
+  function timeOf(r) { return r.time || TIME; }
 
   function el(tag, attrs, children) {
     var n = document.createElement(tag);
@@ -118,10 +122,11 @@
     var p = parts(race.date), d = p.y + pad(p.m) + pad(p.d);
     var nx = new Date(p.y, p.m - 1, p.d + 1), d2 = nx.getFullYear() + pad(nx.getMonth() + 1) + pad(nx.getDate());
     var when = "DTSTART;VALUE=DATE:" + d + "\r\nDTEND;VALUE=DATE:" + d2;
-    var tm = /^(\d{1,2}):(\d{2})$/.exec(race.time || "");
+    var tm = /^(\d{1,2}):(\d{2})$/.exec(timeOf(race));
     if (tm) {
       var st = d + "T" + pad(+tm[1]) + tm[2] + "00";
-      var en = d + "T" + pad(Math.min(+tm[1] + 3, 23)) + tm[2] + "00";
+      var e = new Date(p.y, p.m - 1, p.d, +tm[1] + 3, +tm[2]);
+      var en = e.getFullYear() + pad(e.getMonth() + 1) + pad(e.getDate()) + "T" + pad(e.getHours()) + pad(e.getMinutes()) + "00";
       when = "DTSTART;TZID=Europe/Madrid:" + st + "\r\nDTEND;TZID=Europe/Madrid:" + en;
     }
     var ch = champOf(race), title = "Slot Llinars · " + (ch ? tr(ch.name) : tr(race.name));
@@ -163,7 +168,7 @@
       var where = [];
       if (next.place && next.place !== PLACE) where.push(next.place);
       else where.push(PLACE);
-      if (next.time) where.push(next.time);
+      if (timeOf(next)) where.push(timeOf(next) + " h");
       nextBox.appendChild(el("article", { class: "nextcard", "aria-label": t.next }, [
         el("div", { class: "nx-top" }, [el("span", { text: t.next }), el("strong", { text: countdown(t, next.date, today) })]),
         el("div", { class: "nx-body" }, [
@@ -186,7 +191,9 @@
     list.forEach(function (r) {
       var ch = champOf(r), dow = dateObj(r.date).getDay();
       var card = el("article", { class: "card rescard" }, [
-        el("div", { class: "rc-head" }, [chip(tr(r.name), ch), el("strong", { text: t.days[dow] + " " + fmt(r.date) })])
+        el("div", { class: "rc-head" }, [chip(tr(r.name), ch),
+          ch && tr(ch.name).toUpperCase() !== tr(r.name).toUpperCase() ? el("span", { class: "rc-ch", text: tr(ch.name) + (ch.sub ? " · " + tr(ch.sub) : "") }) : null,
+          el("strong", { text: t.days[dow] + " " + fmt(r.date) })])
       ]);
       if (r.podium && r.podium.length) {
         var ol = el("ol", { class: "podium" });
@@ -211,7 +218,7 @@
     });
 
     // 3 · Calendari per mesos, amb filtres
-    document.getElementById("cal_lead").textContent = PLACE ? fill(t.cal_lead, { place: PLACE }) : "";
+    document.getElementById("cal_lead").textContent = PLACE ? fill(TIME ? t.cal_lead_t : t.cal_lead, { place: PLACE, time: TIME }) : "";
     var years = cal.filter(function (r) { return r.date; }).map(function (r) { return parts(r.date).y; });
     if (years.length) {
       var y0 = Math.min.apply(null, years), y1 = Math.max.apply(null, years);
@@ -248,7 +255,7 @@
       if (ch && ch.sub) info.push(tr(ch.name));
       else if (ch && tr(ch.name).toUpperCase() !== tr(r.name).toUpperCase()) info.push(tr(ch.name));
       if (r.place && r.place !== PLACE) info.push(r.place);
-      if (r.time) info.push(r.time);
+      if (r.time && r.time !== TIME) info.push(r.time + " h");
       li.appendChild(el("span", { class: "info", text: info.join(" · ") }));
       var st = el("span", { class: "st" });
       if (isPast) st.appendChild(el("span", { class: "tag done", text: t.done }));

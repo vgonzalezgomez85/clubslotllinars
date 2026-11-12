@@ -45,6 +45,8 @@ const DATA = {
 
   // Lloc per defecte: al calendari només es mostra el lloc si és diferent d'aquest.
   defaultPlace: "Llinars del Vallès",
+  // Hora per defecte de les curses (si una cursa té "time", té prioritat).
+  defaultTime: "22:00",
 
   // Campionats. "match" = noms del calendari que pertanyen a aquest campionat.
   // "rules" = PDF del reglament (null = properament). "color" = color de l'etiqueta.
@@ -55,8 +57,9 @@ const DATA = {
       rules: "pdf/reglaments/Reglamento_Copa_Slot-it_2026_ES-CA.pdf" },
     { id: "gt3", match: ["GT3"], color: "#e32b1f", text: "#fff",
       name: { ca: "GT3", es: "GT3" }, sub: null, rules: null },
-    { id: "cp", match: ["C.P"], color: "#1f4fbf", text: "#fff",
-      name: { ca: "C.P", es: "C.P" }, sub: null, rules: null },
+    { id: "cp", match: ["C.P", "DTM"], color: "#1f4fbf", text: "#fff",
+      name: { ca: "Cotxe a Pista", es: "Cotxe a Pista" },
+      sub:  { ca: "DTM", es: "DTM" }, rules: null },
     { id: "f1", match: ["F1"], color: "#111111", text: "#fff",
       name: { ca: "F1", es: "F1" }, sub: null, rules: null },
     { id: "resis", match: ["RESISDOMI"], color: "#6b6b6b", text: "#fff",
@@ -77,7 +80,7 @@ const DATA = {
   // Si la data coincideix amb una cursa del calendari, hi surt el botó "Resultats".
   results: [
     { date: "2026-11-06",
-      name: { ca: "DTM", es: "DTM" },
+      name: { ca: "C.P", es: "C.P" },
       pdf: "pdf/resultats/dtm_6112026.html",
       podium: [ { name: "JOAN", laps: 167 }, { name: "EDU", laps: 163 }, { name: "ARNAU", laps: 162 } ],
       fastLap: { time: "12,641", name: "JOAN" },
