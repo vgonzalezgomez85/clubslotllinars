@@ -3,7 +3,7 @@
   --f-llinars:"Copperplate Gothic Bold","Copperplate","Cinzel",serif;
   --f-body:"Inter","Segoe UI",Arial,sans-serif}
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
 body{overflow-x:clip}
 body{font-family:var(--f-body);color:var(--black);background:var(--white);line-height:1.5}
 button{font-family:inherit}
@@ -13,7 +13,7 @@ button{font-family:inherit}
 header{background:var(--black);color:#fff;position:sticky;top:0;z-index:5}
 .bar{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;gap:16px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;text-decoration:none}
-.brand img{height:60px;width:auto;display:block;background:#fff;border-radius:10px;padding:2px 6px}
+.brand img{height:80px;width:auto;display:block;background:#fff;border-radius:10px;padding:2px 6px}
 nav{display:flex;align-items:center;flex-wrap:wrap}
 nav a{font-family:var(--f-llinars);color:#fff;text-decoration:none;font-weight:700;margin-left:20px;text-transform:uppercase;font-size:14px;letter-spacing:1px}
 nav a:hover{color:var(--yellow)}
