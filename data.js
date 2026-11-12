@@ -43,32 +43,50 @@ const DATA = {
     { date: null, time: "", place: "Llinars del Vallès", name: { ca: "RESISDOMI", es: "RESISDOMI" } }
   ],
 
-  // Reglaments (pdf: null = encara no disponible)
-  rules: [
-    { pdf: "pdf/reglaments/reglament-esportiu.pdf",
-      title: { ca: "Reglament esportiu", es: "Reglamento deportivo" },
-      desc:  { ca: "Format de cursa, puntuació i sancions.", es: "Formato de carrera, puntuación y sanciones." } },
-    { pdf: "pdf/reglaments/reglament-tecnic.pdf",
-      title: { ca: "Reglament tècnic", es: "Reglamento técnico" },
-      desc:  { ca: "Especificacions dels cotxes i components permesos.", es: "Especificaciones de los coches y componentes permitidos." } },
-    { pdf: "pdf/reglaments/Reglamento_Copa_Slot-it_2026_ES-CA.pdf",
-      title: { ca: "Reglament tècnic · Campionat Copa Slot.it", es: "Reglamento técnico · Campeonato Copa Slot.it" },
-      desc:  { ca: "LMP · Hypercar 2026: models permesos, carrosseries, pes i components.", es: "LMP · Hypercar 2026: modelos permitidos, carrocerías, peso y componentes." } },
-    { pdf: null,
-      title: { ca: "Normes de pista", es: "Normas de pista" },
-      desc:  { ca: "Comportament, torns de comissari i seguretat.", es: "Comportamiento, turnos de comisario y seguridad." } }
+  // Lloc per defecte: al calendari només es mostra el lloc si és diferent d'aquest.
+  defaultPlace: "Llinars del Vallès",
+
+  // Campionats. "match" = noms del calendari que pertanyen a aquest campionat.
+  // "rules" = PDF del reglament (null = properament). "color" = color de l'etiqueta.
+  championships: [
+    { id: "slotit", match: ["SLOT.IT"], color: "#ffe92b", text: "#111",
+      name: { ca: "Copa Slot.it", es: "Copa Slot.it" },
+      sub:  { ca: "LMP · Hypercar 2026", es: "LMP · Hypercar 2026" },
+      rules: "pdf/reglaments/Reglamento_Copa_Slot-it_2026_ES-CA.pdf" },
+    { id: "gt3", match: ["GT3"], color: "#e32b1f", text: "#fff",
+      name: { ca: "GT3", es: "GT3" }, sub: null, rules: null },
+    { id: "cp", match: ["C.P"], color: "#1f4fbf", text: "#fff",
+      name: { ca: "C.P", es: "C.P" }, sub: null, rules: null },
+    { id: "f1", match: ["F1"], color: "#111111", text: "#fff",
+      name: { ca: "F1", es: "F1" }, sub: null, rules: null },
+    { id: "resis", match: ["RESISDOMI"], color: "#6b6b6b", text: "#fff",
+      name: { ca: "Resisdomi", es: "Resisdomi" }, sub: null, rules: null }
   ],
 
-  // Resultats. "verification" és el PDF de verificacions tècniques d'aquella cursa
-  // (deixa-ho a null fins que es publiquin).
+  // Altres documents generals (pdf: null = encara no disponible)
+  rules: [
+    { pdf: null,
+      title: { ca: "Normes de pista", es: "Normas de pista" } },
+    { pdf: null,
+      title: { ca: "Reglament esportiu", es: "Reglamento deportivo" } }
+  ],
+
+  // Resultats. "pdf" = informe de la cursa (PDF o HTML).
+  // "podium" = els 3 primers (nom i voltes); "fastLap" = volta ràpida (opcional).
+  // "verification" = PDF de verificacions tècniques (null fins que es publiqui).
+  // Si la data coincideix amb una cursa del calendari, hi surt el botó "Resultats".
   results: [
     { date: "2026-11-06",
       name: { ca: "DTM", es: "DTM" },
       pdf: "pdf/resultats/dtm_6112026.html",
+      podium: [ { name: "JOAN", laps: 167 }, { name: "EDU", laps: 163 }, { name: "ARNAU", laps: 162 } ],
+      fastLap: { time: "12,641", name: "JOAN" },
       verification: null },
     { date: "2026-10-23",
       name: { ca: "GT3", es: "GT3" },
       pdf: "pdf/resultats/gt3_23102026.html",
+      podium: [ { name: "BULDETY", laps: 190 }, { name: "EFE", laps: 190 }, { name: "JOAN", laps: 188 } ],
+      fastLap: { time: "10,987", name: "EFE" },
       verification: null }
   ]
 };
