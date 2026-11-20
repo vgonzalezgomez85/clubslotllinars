@@ -79,6 +79,12 @@ const DATA = {
   // "verification" = PDF de verificacions tècniques (null fins que es publiqui).
   // Si la data coincideix amb una cursa del calendari, hi surt el botó "Resultats".
   results: [
+    { date: "2026-11-20",
+      name: { ca: "Copa Slot.it", es: "Copa Slot.it" },
+      pdf: "pdf/resultats/slotit_20112026.html",
+      podium: [ { name: "EFE", laps: 183 }, { name: "ARNAU", laps: 181 }, { name: "EDU", laps: 179 } ],
+      fastLap: { time: "11,142", name: "EFE" },
+      verification: null },
     { date: "2026-11-06",
       name: { ca: "C.P", es: "C.P" },
       pdf: "pdf/resultats/dtm_6112026.html",
